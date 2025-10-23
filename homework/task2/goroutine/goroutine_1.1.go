@@ -45,7 +45,7 @@ func odd(ch <-chan int, quit <-chan int, wg *sync.WaitGroup) {
 		select {
 		case v, ok := <-ch:
 			if !ok {
-				return
+				continue
 			}
 			fmt.Println("odd", v)
 		case <-quit:
@@ -61,7 +61,7 @@ func even(ch <-chan int, quit <-chan int, wg *sync.WaitGroup) {
 		select {
 		case v, ok := <-ch:
 			if !ok {
-				return
+				continue
 			}
 			fmt.Println("even", v)
 		case <-quit:
