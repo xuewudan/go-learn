@@ -12,17 +12,20 @@ type User struct {
 	gorm.Model        // 嵌入 Gorm 基础模型，包含 ID、CreatedAt、UpdatedAt、DeletedAt 字段
 	Username   string `gorm:"size:50;not null;unique"`  // 用户名，唯一且非空
 	Email      string `gorm:"size:100;not null;unique"` // 邮箱，唯一且非空
+	PostNum    uint
 	Posts      []Post // 一对多关系：一个用户可以有多个文章
 }
 
 // Post 模型（文章）
 type Post struct {
 	gorm.Model           // 基础字段
-	Title      string    `gorm:"size:200;not null"`  // 文章标题
-	Content    string    `gorm:"type:text;not null"` // 文章内容
-	UserID     uint      `gorm:"not null"`           // 外键：关联用户 ID
-	User       User      // 关联用户（一对多的反向引用）
-	Comments   []Comment // 一对多关系：一篇文章可以有多个评论
+	Title         string `gorm:"size:200;not null"`  // 文章标题
+	Content       string `gorm:"type:text;not null"` // 文章内容
+	CommentNum    uint
+	CommentStatus string
+	UserID        uint      `gorm:"not null"` // 外键：关联用户 ID
+	User          User      // 关联用户（一对多的反向引用）
+	Comments      []Comment // 一对多关系：一篇文章可以有多个评论
 }
 
 // Comment 模型（评论）

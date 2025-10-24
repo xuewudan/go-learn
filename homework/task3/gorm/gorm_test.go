@@ -13,3 +13,7 @@ func Test2(t *testing.T) {
 func Test22(t *testing.T) {
 	testB()
 }
+
+func Test3(t *testing.T) {
+	testC()
+}
