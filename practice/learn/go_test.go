@@ -1,6 +1,8 @@
-package one
+package learn
 
-import "testing"
+import (
+	"testing"
+)
 
 func TestChannelTest(t *testing.T) {
 	ChannelTest()
