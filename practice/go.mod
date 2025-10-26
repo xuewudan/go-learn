@@ -1,3 +1,3 @@
-module github.com/xuewudan/go-learn/tree/main/practice
+module practice
 
 go 1.25.3

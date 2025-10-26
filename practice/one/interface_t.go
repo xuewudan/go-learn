@@ -1,4 +1,4 @@
-package main
+package one
 
 import (
 	"fmt"
@@ -25,7 +25,7 @@ func (c Circle) Perimeter() float64 {
 	return 2 * math.Pi * c.Radius
 }
 
-func main() {
+func test() {
 	c := Circle{Radius: 5}
 	var s Shape = c // 接口变量可以存储实现了接口的类型
 	fmt.Println("Area:", s.Area())
