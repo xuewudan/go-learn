@@ -8,7 +8,7 @@ import (
 	"github.com/sirupsen/logrus"
 )
 
-// 初始化日志
+// InitLogger 初始化日志
 func InitLogger() {
 	// 设置日志格式为 JSON 格式
 	logrus.SetFormatter(&logrus.JSONFormatter{

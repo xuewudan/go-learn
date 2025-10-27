@@ -10,6 +10,7 @@ import (
 	"blog-backend/util"
 
 	"github.com/gin-gonic/gin"
+	"github.com/sirupsen/logrus"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 )
@@ -28,7 +29,7 @@ func main() {
 	)
 	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
 	if err != nil {
-		util.Logrus.Fatalf("数据库连接失败: %v", err)
+		logrus.Fatalf("数据库连接失败: %v", err)
 	}
 
 	// 自动迁移表结构
@@ -67,8 +68,8 @@ func main() {
 
 	// 启动服务器
 	addr := fmt.Sprintf(":%d", cfg.ServerPort)
-	util.Logrus.Infof("服务器启动在 %s", addr)
+	logrus.Infof("服务器启动在 %s", addr)
 	if err := r.Run(addr); err != nil {
-		util.Logrus.Fatalf("服务器启动失败: %v", err)
+		logrus.Fatalf("服务器启动失败: %v", err)
 	}
 }
