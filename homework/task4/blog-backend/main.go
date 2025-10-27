@@ -52,8 +52,8 @@ func main() {
 		public.POST("/register", authHandler.Register)
 		public.POST("/login", authHandler.Login)
 		public.GET("/posts", postHandler.GetAllPosts)
+		public.GET("/posts/comments/:postID", commentHandler.GetPostComments)
 		public.GET("/posts/:id", postHandler.GetPost)
-		public.GET("/posts/:postID/comments", commentHandler.GetPostComments)
 	}
 
 	// 需要认证的路由
@@ -62,11 +62,11 @@ func main() {
 	{
 		// 文章管理
 		protected.POST("/posts", postHandler.CreatePost)
+		// 评论管理
+		protected.POST("/posts/comments/:postID", commentHandler.CreateComment)
 		protected.PUT("/posts/:id", postHandler.UpdatePost)
 		protected.DELETE("/posts/:id", postHandler.DeletePost)
 
-		// 评论管理
-		protected.POST("/posts/:postID/comments", commentHandler.CreateComment)
 	}
 
 	// 启动服务器
