@@ -33,7 +33,10 @@ func main() {
 	}
 
 	// 自动迁移表结构
-	db.AutoMigrate(&model.User{}, &model.Post{}, &model.Comment{})
+	err = db.AutoMigrate(&model.User{}, &model.Post{}, &model.Comment{})
+	if err != nil {
+		logrus.Fatalf("数据库迁移失败: %v", err)
+	}
 
 	// 初始化处理器
 	authHandler := handler.NewAuthHandler(db)
